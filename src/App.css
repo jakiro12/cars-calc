@@ -153,6 +153,7 @@ h1 {
 
 .cost-label {
   overflow-wrap: anywhere;
+  color: #ffffff;
 }
 
 .amount-field {
@@ -351,6 +352,7 @@ h1 {
   .panel-heading h2,
   .scenario-heading h2 {
     font-size: 1.18rem;
+    color: #ffffff;
   }
 
   .cost-row {
