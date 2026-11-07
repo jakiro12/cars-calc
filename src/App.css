@@ -245,3 +245,29 @@ h1 {
 
 
 
+@media (max-width: 900px) {
+  .page-header { align-items: stretch; flex-direction: column; }
+  .investment-card { width: 100%; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .cost-column { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+
+@media (max-width: 600px) {
+  .app-shell { padding: 18px 14px 28px; }
+  .page-header { gap: 16px; margin-bottom: 18px; }
+  .panel { padding: 17px 14px; border-radius: 17px; }
+  .cost-column { grid-template-columns: 1fr; gap: 16px; }
+  .panel-heading h2, .scenario-heading h2 { font-size: 1.18rem; }
+  .cost-row { grid-template-columns: minmax(0, 1fr) minmax(95px, 38%); font-size: 1rem; }
+  .projection-panel { padding: 18px 10px; }
+  .scenario-labels { font-size: .75rem; }
+  .scenario-price { gap: 4px; padding: 10px 6px; font-size: .95rem; }
+  .profit-amount { gap: 4px; font-size: .82rem; }
+  .profit-margin { font-size: 1rem; }
+}
+
+@media (max-width: 360px) {
+  .total-pill { padding: 8px; gap: 5px; font-size: .88rem; }
+  .scenario-price { font-size: .82rem; }
+  .profit-amount { font-size: .72rem; }
+}
