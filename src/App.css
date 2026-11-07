@@ -26,12 +26,14 @@
 .eyebrow {
   margin: 0 0 8px;
   color: var(--gold);
-  font-size: .75rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: .16em;
 }
 
-h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3, p {
+  margin-top: 0;
+}
 
 h1 {
   margin-bottom: 7px;
@@ -39,13 +41,19 @@ h1 {
   letter-spacing: -.035em;
 }
 
-.page-description, .helper-text, .page-footer {
+.page-description,
+.helper-text,
+.page-footer {
   color: var(--text-muted);
+  font-size: 1rem;
 }
 
-.page-description { margin-bottom: 0; }
+.page-description {
+  margin-bottom: 0;
+}
 
-.investment-card, .panel {
+.investment-card,
+.panel {
   border: 1px solid rgba(181, 199, 228, .28);
   border-radius: 22px;
   background: var(--surface);
@@ -75,7 +83,9 @@ h1 {
   letter-spacing: .025em;
 }
 
-.investment-card small { font-size: .72em; }
+.investment-card small {
+  font-size: 1rem;
+}
 
 .dashboard-grid {
   display: grid;
@@ -84,13 +94,16 @@ h1 {
   gap: 26px;
 }
 
-.cost-column, .projection-column {
+.cost-column,
+.projection-column {
   display: grid;
   gap: 24px;
   min-width: 0;
 }
 
-.panel { padding: 22px; }
+.panel {
+  padding: 22px;
+}
 
 .panel-heading {
   display: flex;
@@ -100,7 +113,8 @@ h1 {
   margin-bottom: 12px;
 }
 
-.panel-heading h2, .scenario-heading h2 {
+.panel-heading h2,
+.scenario-heading h2 {
   margin: 0;
   font-size: 1.35rem;
   font-weight: 700;
@@ -116,11 +130,16 @@ h1 {
   background: linear-gradient(145deg, #ffe9b8, #d8b574);
   box-shadow: 0 0 18px rgba(243, 212, 154, .2);
   white-space: nowrap;
+  font-size: 1rem;
 }
 
-.total-pill strong { font-weight: 600; }
+.total-pill strong {
+  font-weight: 600;
+}
 
-.cost-list { display: grid; }
+.cost-list {
+  display: grid;
+}
 
 .cost-row {
   display: grid;
@@ -129,10 +148,12 @@ h1 {
   min-height: 30px;
   border-bottom: 1px solid var(--line);
   gap: 8px;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
-.cost-label { overflow-wrap: anywhere; }
+.cost-label {
+  overflow-wrap: anywhere;
+}
 
 .amount-field {
   display: flex;
@@ -140,26 +161,45 @@ h1 {
   justify-content: flex-end;
   gap: 7px;
   color: #e8d5ae;
+  font-size: 1rem;
 }
 
-.amount-field input, .scenario-price input {
-  width: 90%;
+.amount-field input,
+.scenario-price input {
+  flex: 1;
+  width: 0;
   min-width: 0;
   border: 0;
   outline: 0;
   color: inherit;
   background: transparent;
   text-align: right;
+  font-size: 16px;
+  font-family: inherit;
 }
 
-.amount-field input::placeholder, .scenario-price input::placeholder { color: #d2d8e2; opacity: .85; }
-.amount-field input::-webkit-inner-spin-button, .scenario-price input::-webkit-inner-spin-button { appearance: none; }
+.amount-field input::placeholder,
+.scenario-price input::placeholder {
+  color: #d2d8e2;
+  opacity: .85;
+}
 
-.projection-panel { padding: 24px; }
+.amount-field input::-webkit-inner-spin-button,
+.scenario-price input::-webkit-inner-spin-button {
+  appearance: none;
+}
 
-.scenario-heading { text-align: center; }
+.projection-panel {
+  padding: 24px;
+}
 
-.scenario-labels, .scenario-prices, .profit-grid {
+.scenario-heading {
+  text-align: center;
+}
+
+.scenario-labels,
+.scenario-prices,
+.profit-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -183,8 +223,14 @@ h1 {
   font-size: clamp(1rem, 2vw, 1.45rem);
 }
 
-.scenario-price:first-child { border-radius: 10px 0 0 10px; }
-.scenario-price:last-child { border-radius: 0 10px 10px 0; }
+.scenario-price:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.scenario-price:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
 .scenario-price.media {
   color: #211e1b;
   border-color: transparent;
@@ -194,7 +240,11 @@ h1 {
   transform: scale(1.025);
   z-index: 1;
 }
-.scenario-price input { text-align: left; }
+
+.scenario-price input {
+  text-align: left;
+  font-size: 16px;
+}
 
 .profit-title {
   margin: 22px 0 8px;
@@ -214,7 +264,10 @@ h1 {
   color: var(--gold);
   text-align: center;
 }
-.profit-cell:last-child { border-right: 0; }
+
+.profit-cell:last-child {
+  border-right: 0;
+}
 
 .profit-amount {
   display: flex;
@@ -224,11 +277,17 @@ h1 {
   min-height: 48px;
   padding: 8px 5px;
   border-bottom: 1px solid var(--line);
-  font-size: clamp(.9rem, 1.8vw, 1.35rem);
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
   white-space: nowrap;
 }
-.profit-amount strong { font-weight: 500; }
-.profit-cell.negative { color: #e05c62; }
+
+.profit-amount strong {
+  font-weight: 500;
+}
+
+.profit-cell.negative {
+  color: #e05c62;
+}
 
 .profit-margin {
   min-height: 44px;
@@ -239,35 +298,106 @@ h1 {
 
 .helper-text {
   margin: 12px 0 0;
-  font-size: .85rem;
+  font-size: 1rem;
   text-align: center;
 }
 
-
+.page-footer {
+  margin-top: 24px;
+  font-size: 1rem;
+  text-align: center;
+}
 
 @media (max-width: 900px) {
-  .page-header { align-items: stretch; flex-direction: column; }
-  .investment-card { width: 100%; }
-  .dashboard-grid { grid-template-columns: 1fr; }
-  .cost-column { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .page-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .investment-card {
+    width: 100%;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cost-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
 }
 
 @media (max-width: 600px) {
-  .app-shell { padding: 18px 14px 28px; }
-  .page-header { gap: 16px; margin-bottom: 18px; }
-  .panel { padding: 17px 14px; border-radius: 17px; }
-  .cost-column { grid-template-columns: 1fr; gap: 16px; }
-  .panel-heading h2, .scenario-heading h2 { font-size: 1.18rem; }
-  .cost-row { grid-template-columns: minmax(0, 1fr) minmax(95px, 38%); font-size: 1rem; }
-  .projection-panel { padding: 18px 10px; }
-  .scenario-labels { font-size: .75rem; }
-  .scenario-price { gap: 4px; padding: 10px 6px; font-size: .95rem; }
-  .profit-amount { gap: 4px; font-size: .82rem; }
-  .profit-margin { font-size: 1rem; }
+  .app-shell {
+    padding: 18px 14px 28px;
+  }
+
+  .page-header {
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .panel {
+    padding: 17px 14px;
+    border-radius: 17px;
+  }
+
+  .cost-column {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .panel-heading h2,
+  .scenario-heading h2 {
+    font-size: 1.18rem;
+  }
+
+  .cost-row {
+    grid-template-columns: minmax(0, 1fr) minmax(95px, 38%);
+    font-size: 1rem;
+  }
+
+  .projection-panel {
+    padding: 18px 10px;
+  }
+
+  .scenario-labels {
+    font-size: 1rem;
+  }
+
+  .scenario-price {
+    gap: 4px;
+    padding: 10px 6px;
+    font-size: 1rem;
+  }
+
+  .scenario-price.media {
+    transform: none;
+  }
+
+  .profit-amount {
+    gap: 4px;
+    font-size: 1rem;
+  }
+
+  .profit-margin {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 360px) {
-  .total-pill { padding: 8px; gap: 5px; font-size: .88rem; }
-  .scenario-price { font-size: .82rem; }
-  .profit-amount { font-size: .72rem; }
+  .total-pill {
+    padding: 8px;
+    gap: 5px;
+    font-size: 1rem;
+  }
+
+  .scenario-price {
+    font-size: 1rem;
+  }
+
+  .profit-amount {
+    font-size: 1rem;
+  }
 }
