@@ -23,21 +23,27 @@ export default function ProjectionSection({ scenarios, totalInvestment, onPriceC
       </div>
 
       <div className="scenario-prices">
-        {scenarios.map((scenario) => (
-          <label className={`scenario-price ${scenario.id}`} key={scenario.id}>
-            <span className="currency">$</span>
-            <input
-              aria-label={`Precio de venta ${scenario.label}`}
-              type="number"
-              min="0"
-              step="0.01"
-              value={scenario.price === 0 ? "" : scenario.price}
-              placeholder="—"
-              onChange={(event) => onPriceChange(scenario.id, Math.max(0, Number(event.target.value) || 0))}
-            />
-          </label>
-        ))}
-      </div>
+  {scenarios.map((scenario) => (
+    <label className={`scenario-price ${scenario.id}`} key={scenario.id}>
+      <span className="currency">$</span>
+      <input
+        aria-label={`Precio de venta ${scenario.label}`}
+        type="text"
+        inputMode="decimal"
+        value={
+          scenario.price === 0
+            ? ""
+            : new Intl.NumberFormat("en-US").format(scenario.price)
+        }
+        placeholder="—"
+        onChange={(event) => {
+          const value = event.target.value.replace(/,/g, "");
+          onPriceChange(scenario.id, Math.max(0, Number(value) || 0));
+        }}
+      />
+    </label>
+  ))}
+</div>
 
       <h3 className="profit-title">Utilidad proyectada</h3>
       <div className="profit-grid">
