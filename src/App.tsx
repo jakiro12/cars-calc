@@ -60,13 +60,10 @@ function App() {
               type="text"
               value={investmentName}
               onChange={(event) => setInvestmentName(event.target.value)}
-              placeholder="Nombre del calculo"
-              aria-label="Nombre del calculo"
+              placeholder="Ingresa el auto"
+              aria-label="Ingresa el auto"
             />
-          </div>
-          <p className="page-description">
-            Ingresá los costos y compará distintos escenarios de venta.
-          </p>
+          </div>          
         </div>
       </header>
 
