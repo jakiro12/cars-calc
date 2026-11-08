@@ -72,7 +72,7 @@ function App() {
       <div className="dashboard-grid">
         <div className="cost-column">
           <CostSection
-            title="Costos de venta"
+            title="Costos de ventas"
             items={saleCosts}
             onChange={(id, amount) =>
               setSaleCosts((current) => updateItem(current, id, amount))
