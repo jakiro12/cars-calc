@@ -53,7 +53,9 @@ function App() {
     <main className="app-shell">
       <header className="page-header">
         <div>
-          <h1>Calculadora de inversión</h1>
+          <h1
+            style={{marginLeft:10}}
+          >Calculadora de inversión</h1>
           <div className="investment-card">
 
            <input
