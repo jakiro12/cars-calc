@@ -54,7 +54,16 @@ function App() {
       <header className="page-header">
         <div>
           <p className="eyebrow">CONTROL DE COSTOS</p>
-          <h1>Calculadora de inversión</h1>
+          <div className="investment-card">
+
+           <input
+              type="text"
+              value={investmentName}
+              onChange={(event) => setInvestmentName(event.target.value)}
+              placeholder="Nombre del calculo"
+              aria-label="Nombre del calculo"
+            />
+          </div>
           <p className="page-description">
             Ingresá los costos y compará distintos escenarios de venta.
           </p>
@@ -82,14 +91,8 @@ function App() {
 
         <div className="projection-column">
           <div className="investment-card">
-            <input
-              type="text"
-              value={investmentName}
-              onChange={(event) => setInvestmentName(event.target.value)}
-              placeholder="Nombre de la inversión"
-              aria-label="Nombre de la inversión"
-            />
-
+           
+            <h2 style={{color:'#ffffff'}}>Total de inversion</h2>
             <strong>
               <small>$</small>{" "}
               {totalInvestment.toLocaleString("en-US", {
