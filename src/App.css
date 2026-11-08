@@ -210,7 +210,7 @@ h1 {
 .scenario-labels {
   margin: 8px 0 6px;
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: .9rem;
   text-transform: uppercase;
 }
 

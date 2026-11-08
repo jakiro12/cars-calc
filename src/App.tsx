@@ -13,7 +13,7 @@ type Scenario = {
 
 const initialScenarios: Scenario[] = [
   { id: "optimista", label: "Optimista", price: 0 },
-  { id: "media", label: "Media", price: 25000 },
+  { id: "media", label: "Media", price: 0 },
   { id: "pesimista", label: "Pesimista", price: 0 },
 ];
 
@@ -91,7 +91,7 @@ function App() {
         <div className="projection-column">
           <div className="investment-card">
            
-            <h2 style={{color:'#ffffff'}}>Total de inversion</h2>
+            <h2 style={{color:'#ffffff'}}>Inversión total</h2>
             <strong>
               <small>$</small>{" "}
               {totalInvestment.toLocaleString("en-US", {
