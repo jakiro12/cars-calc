@@ -1,10 +1,11 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
 import CostSection from "./components/CostSection";
 import ProjectionSection from "./components/ProjectionSection";
 import { parseAmount } from "./utils/format";
 import { initialOperatingCosts, initialSaleCosts, type CostItem } from "./utils/data";
 import { exportPdf } from "./utils/exportPdf";
+import { createInvestmentReport } from "./utils/report";
 
 type Scenario = {
   id: "optimista" | "media" | "pesimista";
@@ -49,14 +50,9 @@ function App() {
       )
     );
   }
- const pdfRef = useRef<HTMLDivElement>(null);
 
-  const handleExport = async () => {
-    if (!pdfRef.current) return;
-    await exportPdf(pdfRef.current, "mi-calculadora");
-  };
   return (
-    <main className="app-shell" ref={pdfRef}>
+    <main className="app-shell" >
       <header className="page-header">
         <div>
           <h1
@@ -114,7 +110,16 @@ function App() {
           />
           <button
           className="pdf-btn"
-            onClick={handleExport}
+           onClick={() => {
+    const report = createInvestmentReport({
+      investmentName,
+      saleCosts,
+      operatingCosts,
+      scenarios,
+    });
+
+    exportPdf(report);
+  }}
           >
             Generar PDF
           </button>

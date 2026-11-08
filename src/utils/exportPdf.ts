@@ -1,63 +1,145 @@
-import html2canvas from "html2canvas";
+
 import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+import type { InvestmentReport } from "./report";
 
-export async function exportPdf(
-  element: HTMLElement,
-  fileName: string
-) {
-const canvas = await html2canvas(element, {
-  scale: 2,
-  useCORS: true,
-  backgroundColor: "#ffffff",
-  logging: false,
-  windowWidth: element.scrollWidth,
-  windowHeight: element.scrollHeight,
-  onclone: (clonedDocument) => {
-    const style = clonedDocument.createElement("style");
+const money = (value: number) =>
+  `$ ${value.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
 
-    style.textContent = `
-      * {
-        outline: none !important;
-        box-shadow: none !important;
-      }
+export function exportPdf(report: InvestmentReport) {
+  const pdf = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4",
+  });
 
-      *:focus,
-      *:focus-visible,
-      *:active {
-        outline: none !important;
-      }
-    `;
+  pdf.setFont("helvetica", "bold");
+  pdf.setFontSize(18);
+  pdf.text("REPORTE DE INVERSION", 14, 20);
 
-    clonedDocument.head.appendChild(style);
-  },
-});
+  pdf.setFont("helvetica", "normal");
+  pdf.setFontSize(10);
 
-  const image = canvas.toDataURL("image/png");
+  pdf.text(
+    `Inversion: ${report.investmentName || "Sin nombre"}`,
+    14,
+    29
+  );
 
-  const pdf = new jsPDF("p", "mm", "a4");
+  pdf.text(`Fecha: ${report.date}`, 14, 35);
 
-  const pdfWidth = pdf.internal.pageSize.getWidth();
-  const pdfHeight = pdf.internal.pageSize.getHeight();
+  autoTable(pdf, {
+    startY: 43,
+    head: [["COSTOS DE VENTA", "IMPORTE"]],
+    body: report.saleCosts.map((item) => [
+      item.label,
+      money(item.amount),
+    ]),
+    foot: [["TOTAL COSTOS DE VENTA", money(report.saleTotal)]],
+    theme: "grid",
+    headStyles: {
+      fillColor: [35, 45, 65],
+      textColor: 255,
+    },
+    footStyles: {
+      fillColor: [235, 238, 243],
+      textColor: [35, 45, 65],
+      fontStyle: "bold",
+    },
+    styles: {
+      fontSize: 9,
+      cellPadding: 3,
+    },
+    columnStyles: {
+      1: { halign: "right" },
+    },
+  });
 
-  const imageWidth = pdfWidth;
-  const imageHeight = (canvas.height * imageWidth) / canvas.width;
+  autoTable(pdf, {
+    startY: (pdf as any).lastAutoTable.finalY + 8,
+    head: [["GASTOS OPERATIVOS", "IMPORTE"]],
+    body: report.operatingCosts.map((item) => [
+      item.label,
+      money(item.amount),
+    ]),
+    foot: [["TOTAL GASTOS OPERATIVOS", money(report.operatingTotal)]],
+    theme: "grid",
+    headStyles: {
+      fillColor: [35, 45, 65],
+      textColor: 255,
+    },
+    footStyles: {
+      fillColor: [235, 238, 243],
+      textColor: [35, 45, 65],
+      fontStyle: "bold",
+    },
+    styles: {
+      fontSize: 9,
+      cellPadding: 3,
+    },
+    columnStyles: {
+      1: { halign: "right" },
+    },
+  });
 
-  let heightLeft = imageHeight;
-  let position = 0;
+  const finalY = (pdf as any).lastAutoTable.finalY + 10;
 
-  pdf.addImage(image, "PNG", 0, position, imageWidth, imageHeight);
+  autoTable(pdf, {
+    startY: finalY,
+    head: [["RESUMEN DE INVERSION", "IMPORTE"]],
+    body: [
+      ["Costos de venta", money(report.saleTotal)],
+      ["Gastos operativos", money(report.operatingTotal)],
+      ["INVERSION TOTAL", money(report.totalInvestment)],
+    ],
+    theme: "grid",
+    headStyles: {
+      fillColor: [35, 45, 65],
+      textColor: 255,
+    },
+    styles: {
+      fontSize: 10,
+      cellPadding: 4,
+    },
+    columnStyles: {
+      1: { halign: "right" },
+    },
+  });
 
-  heightLeft -= pdfHeight;
+  autoTable(pdf, {
+    startY: (pdf as any).lastAutoTable.finalY + 10,
+    head: [[
+      "ESCENARIO",
+      "PRECIO DE VENTA",
+      "UTILIDAD",
+      "MARGEN",
+    ]],
+    body: report.scenarios.map((scenario) => [
+      scenario.label,
+      money(scenario.price),
+      money(scenario.profit),
+      `${scenario.margin.toFixed(1)}%`,
+    ]),
+    theme: "grid",
+    headStyles: {
+      fillColor: [35, 45, 65],
+      textColor: 255,
+    },
+    styles: {
+      fontSize: 8,
+      cellPadding: 3,
+    },
+    columnStyles: {
+      1: { halign: "right" },
+      2: { halign: "right" },
+      3: { halign: "right" },
+    },
+  });
 
-  while (heightLeft > 0) {
-    position = heightLeft - imageHeight;
-
-    pdf.addPage();
-
-    pdf.addImage(image, "PNG", 0, position, imageWidth, imageHeight);
-
-    heightLeft -= pdfHeight;
-  }
-
-  pdf.save(`${fileName}.pdf`);
+  pdf.save(
+    `${report.investmentName || "reporte-inversion"}.pdf`
+  );
 }
