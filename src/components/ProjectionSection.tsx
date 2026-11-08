@@ -45,7 +45,7 @@ export default function ProjectionSection({ scenarios, totalInvestment, onPriceC
   ))}
 </div>
 
-      <h3 className="profit-title">Utilidad proyectada</h3>
+      <h3 className="profit-title" style={{color:'#ffffff'}}>Utilidad proyectada</h3>
       <div className="profit-grid">
         {scenarios.map((scenario) => {
           const profit = scenario.price - totalInvestment;
