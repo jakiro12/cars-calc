@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import "./App.css";
 import CostSection from "./components/CostSection";
 import ProjectionSection from "./components/ProjectionSection";
 import { parseAmount } from "./utils/format";
 import { initialOperatingCosts, initialSaleCosts, type CostItem } from "./utils/data";
+import { exportPdf } from "./utils/exportPdf";
 
 type Scenario = {
   id: "optimista" | "media" | "pesimista";
@@ -48,9 +49,14 @@ function App() {
       )
     );
   }
+ const pdfRef = useRef<HTMLDivElement>(null);
 
+  const handleExport = async () => {
+    if (!pdfRef.current) return;
+    await exportPdf(pdfRef.current, "mi-calculadora");
+  };
   return (
-    <main className="app-shell">
+    <main className="app-shell" ref={pdfRef}>
       <header className="page-header">
         <div>
           <h1
@@ -61,7 +67,7 @@ function App() {
            <input
               type="text"
               value={investmentName}
-              onChange={(event) => setInvestmentName(event.target.value)}
+              onChange={(event) => setInvestmentName(event.target.value.toLocaleUpperCase())}
               placeholder="Ingresa el nombre del carro"
               aria-label="Ingresa el nombre del carro"
             />
@@ -106,6 +112,12 @@ function App() {
             totalInvestment={totalInvestment}
             onPriceChange={updateScenario}
           />
+          <button
+          className="pdf-btn"
+            onClick={handleExport}
+          >
+            Generar PDF
+          </button>
         </div>
       </div>
     </main>

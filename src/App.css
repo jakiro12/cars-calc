@@ -429,3 +429,15 @@ h1 {
   color: inherit;
   opacity: 0.65;
 }
+.pdf-btn{
+  background-color: #f3d49a;
+  outline: none;
+  border: none;
+  padding: 9px 13px;
+  border-radius: 11px;
+  width: fit-content;
+  height: fit-content;
+  margin-inline: auto;
+  font-weight: bold;
+  cursor: pointer;
+}
