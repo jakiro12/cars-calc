@@ -12,10 +12,10 @@ export const initialSaleCosts: CostItem[] = [
   { id: "bateria", label: "Batería", amount: 0 },
   { id: "uretano", label: "Uretano", amount: 0 },
   { id: "tapiceria", label: "Tapicería", amount: 0 },
-  { id: "trabajada", label: "Trabajada", amount: 80 },
+  { id: "trabajada", label: "Trabajada", amount: 0 },
   { id: "parabrisas", label: "Parabrisas", amount: 0 },
   { id: "hojalateria", label: "Hojalatería", amount: 0 },
-  { id: "repuve", label: "Repuve MX", amount: 2300 },
+  { id: "repuve", label: "Repuve MX", amount: 0 },
   { id: "calcomanias", label: "Calcomanías", amount: 0 },
   { id: "accesorios", label: "Accesorios o partes", amount: 0 },
 ];

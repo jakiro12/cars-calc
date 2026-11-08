@@ -39,6 +39,7 @@ h1 {
   margin-bottom: 7px;
   font-size: clamp(1.7rem, 3vw, 2.5rem);
   letter-spacing: -.035em;
+  color: #ffffff;
 }
 
 .page-description,
@@ -118,6 +119,7 @@ h1 {
   margin: 0;
   font-size: 1.35rem;
   font-weight: 700;
+  color: #ffffff;
 }
 
 .total-pill {
@@ -409,4 +411,21 @@ h1 {
   .profit-amount {
     font-size: 1rem;
   }
+}
+.investment-card input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.investment-card input::placeholder {
+  color: inherit;
+  opacity: 0.65;
 }
