@@ -53,15 +53,15 @@ function App() {
     <main className="app-shell">
       <header className="page-header">
         <div>
-          <p className="eyebrow">CONTROL DE COSTOS</p>
+          <h1>Calculadora de inversión</h1>
           <div className="investment-card">
 
            <input
               type="text"
               value={investmentName}
               onChange={(event) => setInvestmentName(event.target.value)}
-              placeholder="Ingresa el auto"
-              aria-label="Ingresa el auto"
+              placeholder="Ingresa el nombre del carro"
+              aria-label="Ingresa el nombre del carro"
             />
           </div>          
         </div>
