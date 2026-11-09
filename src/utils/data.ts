@@ -18,9 +18,12 @@ export const initialSaleCosts: CostItem[] = [
   { id: "repuve", label: "Repuve MX", amount: 0 },
   { id: "calcomanias", label: "Calcomanías", amount: 0 },
   { id: "accesorios", label: "Accesorios o partes", amount: 0 },
+  { id: "busqueda de datos", label: "Busqueda de datos", amount: 0 },
+  { id: "otros" ,label: "Otros", amount: 0 },
 ];
 
 export const initialOperatingCosts: CostItem[] = [
+  { id: "clima", label: "Clima", amount: 0 },
   { id: "hotel", label: "Hotel", amount: 0 },
   { id: "lavada", label: "Lavada", amount: 0 },
   { id: "vuelos", label: "Vuelos", amount: 0 },
@@ -32,4 +35,5 @@ export const initialOperatingCosts: CostItem[] = [
   { id: "paqueteria", label: "Envíos Paquetería", amount: 0 },
   { id: "comision-venta", label: "Comisión por venta", amount: 0 },
   { id: "comision-compra", label: "Comisión por compra", amount: 0 },
+  { id: "otros", label: "Otros", amount: 0 },
 ];

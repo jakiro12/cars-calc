@@ -43,6 +43,7 @@ export function exportPdf(report: InvestmentReport) {
     headStyles: {
       fillColor: [35, 45, 65],
       textColor: 255,
+      halign:"center"
     },
     footStyles: {
       fillColor: [235, 238, 243],
@@ -60,6 +61,8 @@ export function exportPdf(report: InvestmentReport) {
 
   autoTable(pdf, {
     startY: (pdf as any).lastAutoTable.finalY + 8,
+    showHead:"firstPage",
+    showFoot:"lastPage",
     head: [["GASTOS OPERATIVOS", "IMPORTE"]],
     body: report.operatingCosts.map((item) => [
       item.label,
@@ -70,12 +73,18 @@ export function exportPdf(report: InvestmentReport) {
     headStyles: {
       fillColor: [35, 45, 65],
       textColor: 255,
+      halign:"center"
     },
     footStyles: {
       fillColor: [235, 238, 243],
       textColor: [35, 45, 65],
       fontStyle: "bold",
     },
+    didParseCell: (data) => {
+  if (data.section === "foot" && data.column.index === 1) {
+    data.cell.styles.halign = "right";
+  }
+},
     styles: {
       fontSize: 9,
       cellPadding: 3,
@@ -99,6 +108,7 @@ export function exportPdf(report: InvestmentReport) {
     headStyles: {
       fillColor: [35, 45, 65],
       textColor: 255,
+      halign:"center"
     },
     styles: {
       fontSize: 10,
@@ -127,6 +137,7 @@ export function exportPdf(report: InvestmentReport) {
     headStyles: {
       fillColor: [35, 45, 65],
       textColor: 255,
+      halign:"center"
     },
     styles: {
       fontSize: 8,
