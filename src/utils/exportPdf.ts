@@ -50,6 +50,11 @@ export function exportPdf(report: InvestmentReport) {
       textColor: [35, 45, 65],
       fontStyle: "bold",
     },
+     didParseCell: (data) => {
+  if (data.section === "foot" && data.column.index === 1) {
+    data.cell.styles.halign = "right";
+  }
+},
     styles: {
       fontSize: 9,
       cellPadding: 3,
