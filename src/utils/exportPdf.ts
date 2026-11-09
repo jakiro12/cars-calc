@@ -106,15 +106,25 @@ export function exportPdf(report: InvestmentReport) {
     head: [["RESUMEN DE INVERSION", "IMPORTE"]],
     body: [
       ["Costos de venta", money(report.saleTotal)],
-      ["Gastos operativos", money(report.operatingTotal)],
-      ["INVERSION TOTAL", money(report.totalInvestment)],
+      ["Gastos operativos", money(report.operatingTotal)]
     ],
+    foot:[["INVERSION TOTAL", money(report.totalInvestment)]],
     theme: "grid",
     headStyles: {
       fillColor: [35, 45, 65],
       textColor: 255,
       halign:"center"
     },
+    footStyles: {
+      fillColor: [235, 238, 243],
+      textColor: [35, 45, 65],
+      fontStyle: "bold",
+    },
+      didParseCell: (data) => {
+  if (data.section === "foot" && data.column.index === 1) {
+    data.cell.styles.halign = "right";
+  }
+},
     styles: {
       fontSize: 10,
       cellPadding: 4,
