@@ -50,7 +50,12 @@ function App() {
       )
     );
   }
-
+function clearForm() {
+  setInvestmentName("");
+  setSaleCosts(initialSaleCosts);
+  setOperatingCosts(initialOperatingCosts);
+  setScenarios(initialScenarios);
+}
   return (
     <main className="app-shell" >
       <header className="page-header">
@@ -108,7 +113,10 @@ function App() {
             totalInvestment={totalInvestment}
             onPriceChange={updateScenario}
           />
-          <button
+         <div
+         className="container-btns"
+         >
+           <button
           className="pdf-btn"
            onClick={() => {
     const report = createInvestmentReport({
@@ -123,6 +131,13 @@ function App() {
           >
             Generar PDF
           </button>
+          <button onClick={clearForm}
+          className="pdf-btn"
+          >
+  Limpiar campos
+</button>
+          </div> 
+         
         </div>
       </div>
     </main>

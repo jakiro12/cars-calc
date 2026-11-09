@@ -429,6 +429,14 @@ h1 {
   color: inherit;
   opacity: 0.65;
 }
+.container-btns{
+  width: auto;
+  height: fit-content;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .pdf-btn{
   background-color: #f3d49a;
   outline: none;
@@ -437,7 +445,6 @@ h1 {
   border-radius: 11px;
   width: fit-content;
   height: fit-content;
-  margin-inline: auto;
   font-weight: bold;
   cursor: pointer;
 }
