@@ -5,7 +5,6 @@ export type CostItem = {
 };
 
 export const initialSaleCosts: CostItem[] = [
-  { id: "clima", label: "Clima A/C", amount: 0 },
   { id: "compra", label: "Compra", amount: 0 },
   { id: "placas", label: "Placas", amount: 0 },
   { id: "llantas", label: "Llantas", amount: 0 },
@@ -14,6 +13,7 @@ export const initialSaleCosts: CostItem[] = [
   { id: "uretano", label: "Uretano", amount: 0 },
   { id: "tapiceria", label: "Tapicería", amount: 0 },
   { id: "trabajada", label: "Trabajada", amount: 0 },
+  { id: "clima", label: "Clima A/C", amount: 0 },
   { id: "parabrisas", label: "Parabrisas", amount: 0 },
   { id: "hojalateria", label: "Hojalatería", amount: 0 },
   { id: "repuve", label: "Repuve MX", amount: 0 },
