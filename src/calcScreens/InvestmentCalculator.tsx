@@ -159,15 +159,7 @@ const formatAmount = (raw: string) => {
             value={vehicleName.toLocaleUpperCase()}
             onChange={(e) => setVehicleName(e.target.value.toLocaleUpperCase())}
           />
-        </div>
-
-        <div className="investment-card">
-          <span>Inversión total</span>
-          <strong>{currency.format(investment)}</strong>
-          <small>
-            Compra {currency.format(purchaseValue)} + Conceptos {currency.format(conceptsTotal)}
-          </small>
-        </div>
+        </div>      
       </header>
 
       <div className="dashboard-grid">
@@ -177,19 +169,17 @@ const formatAmount = (raw: string) => {
               <h2>Costo de compra</h2>
             </div>
             <div className="cost-list">
-              <div className="cost-row">
-                <span className="cost-label">Compra</span>
-              <label className="amount-field">
-              <span>$</span>
+              <div className="cost-row_roi">
               <input
+              className="concept-input"
                 type="text"
+                style={{width:'100%',textAlign:'right'}}
                 inputMode="decimal"
-                placeholder="1,000.00"
+                placeholder="Ingresar Cantidad"
                 aria-label="Costo de compra"
                 value={formatAmount(purchase)}
                 onChange={(e) => setPurchase(sanitizeAmount(e.target.value))}
               />
-            </label>
               </div>
             </div>
           </section>
@@ -278,26 +268,32 @@ const formatAmount = (raw: string) => {
               <h2>Total de días</h2>
             </div>
             <div className="cost-list">
-              <div className="cost-row">
-                <span className="cost-label">Días</span>
-                <label className="amount-field">
+              <div className="cost-row_roi">
                   <input
-                    type="number"
+                   className="concept-input"
+                style={{width:'100%',textAlign:'right'}}
+                    type="text"
                     inputMode="numeric"
                     min="0"
                     step="1"
-                    placeholder="Cantidad de días"
+                    placeholder="Ingresar días"
                     aria-label="Total de días"
                     value={days}
                     onChange={(e) => setDays(e.target.value)}
                   />
-                </label>
               </div>
             </div>
           </section>
         </div>
 
         <div className="projection-column">
+            <div className="investment-card">
+          <span>Inversión total</span>
+          <strong>{currency.format(investment)}</strong>
+          <small>
+            Compra {currency.format(purchaseValue)} + Conceptos {currency.format(conceptsTotal)}
+          </small>
+        </div>
           <section className="panel projection-panel">
             <div className="scenario-heading">
               <h2>Precio de venta proyectado</h2>

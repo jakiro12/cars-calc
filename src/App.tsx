@@ -11,10 +11,10 @@ const App=()=> {
   let setCal;
   const[currentCalc,setCurrentCal]=useState<string|null>(null)
   switch (currentCalc) {
-    case "main":
+    case "margen":
       setCal =<MainScreenCalc/>
       break;
-    case "investment":
+    case "ROI":
       setCal=<InvestmentCalculator/>
       break;
     default:
