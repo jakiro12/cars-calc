@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
 import type { KeyboardEvent } from 'react';
+import { exportCalculatorPdf } from '../utils/exportCalculatorPdf';
 
 type Concept = { id: number; name: string; amount: number };
 type ScenarioKey = 'optimista' | 'media' | 'pesimista';
@@ -113,6 +114,25 @@ export default function InvestmentCalculator() {
     }
   };
 
+  const handleExportPdf = () => {
+    exportCalculatorPdf({
+      investmentName: vehicleName.trim(),
+      date: new Date().toLocaleDateString('es-MX'),
+      days: daysValue > 0 ? daysValue : null,
+      purchase: purchaseValue,
+      concepts: concepts.map(({ name, amount }) => ({ label: name, amount })),
+      conceptsTotal,
+      totalInvestment: investment,
+      scenarios: results.map(({ key, label, profit, roi, perDay }) => ({
+        label,
+        price: prices[key] === '' ? null : toNumber(prices[key]),
+        profit,
+        roi,
+        perDay,
+      })),
+    });
+  };
+
   return (
     <main className="app-shell">
       <header className="page-header">
@@ -141,6 +161,7 @@ export default function InvestmentCalculator() {
 
       <div className="dashboard-grid">
         <div className="cost-column">
+          {/* Costo de compra */}
           <section className="panel">
             <div className="panel-heading">
               <h2>Costo de compra</h2>
@@ -341,6 +362,9 @@ export default function InvestmentCalculator() {
             </p>
 
             <div className="container-btns">
+              <button type="button" className="pdf-btn" onClick={handleExportPdf}>
+                Generar PDF
+              </button>
               <button type="button" className="pdf-btn" onClick={clearAll}>
                 Limpiar campos
               </button>
