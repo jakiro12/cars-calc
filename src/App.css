@@ -7,12 +7,14 @@
   --gold-dark: #b88b48;
   --panel-shadow: 0 16px 35px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255,255,255,.12);
 }
-
+.main-container{
+  width: 100%;
+  background: linear-gradient(145deg, #34445f 0%, #1c2639 58%, #151d2c 100%);
+}
 .app-shell {
   width: 100%;
   min-height: 100vh;
   padding: 20px;
-  background: linear-gradient(145deg, #34445f 0%, #1c2639 58%, #151d2c 100%);
 }
 
 .page-header {
@@ -447,4 +449,168 @@ h1 {
   height: fit-content;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* ===== CSS EXTRA: pégalo al final de tu CSS actual ===== */
+
+/* Campo del nombre del vehículo (header) */
+.name-input,
+.concept-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  outline: none;
+  background: var(--surface-deep);
+  color: #ffffff;
+  font: inherit;
+  font-size: 16px;
+}
+
+.name-input {
+  max-width: 340px;
+  margin-top: 14px;
+}
+
+.concept-input {
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.name-input::placeholder,
+.concept-input::placeholder {
+  color: var(--text-muted);
+}
+
+.name-input:focus,
+.concept-input:focus,
+.add-amount:focus-within {
+  border-color: var(--gold);
+}
+
+/* Texto secundario de la tarjeta de inversión */
+.investment-card small {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-muted);
+}
+
+/* Formulario para agregar / editar conceptos */
+.add-concept {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.add-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.add-amount {
+  flex: 1;
+  min-width: 0;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-deep);
+}
+
+.add-amount input {
+  padding: 10px 0;
+}
+
+.add-row .pdf-btn {
+  white-space: nowrap;
+}
+
+.pdf-btn.secondary {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+}
+
+/* Filas de conceptos con acciones editar / eliminar */
+.concept-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.concept-row .amount-field {
+  gap: 4px;
+}
+
+.concept-amount {
+  margin-right: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cost-row.editing {
+  background: linear-gradient(90deg, transparent, rgba(243, 212, 154, .12));
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  color: var(--gold);
+  background: rgba(255, 255, 255, .06);
+}
+
+/* Resultados: título, ROI y utilidad por día */
+.profit-title {
+  color: #ffffff;
+}
+
+.profit-day {
+  display: grid;
+  place-items: center;
+  min-height: 40px;
+  padding: 6px 4px;
+  border-top: 1px solid var(--line);
+  font-size: 1rem;
+}
+
+.profit-tag {
+  color: var(--text-muted);
+  font-size: .85rem;
+}
+
+.projection-panel .container-btns {
+  margin-top: 18px;
+}
+
+/* Oculta las flechas de los inputs numéricos en Firefox */
+.app-shell input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.header-options{
+  width:100%;
+  height:8dvh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  column-gap: 10px;
+}
+.header-options > button{
+  width: 100px;
+  height: fit-content;
+  background: none;
+  font-size: 16px;
+  font-weight: bolder;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 5px 0px;
 }
