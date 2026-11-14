@@ -184,7 +184,7 @@ const formatAmount = (raw: string) => {
               <input
                 type="text"
                 inputMode="decimal"
-                placeholder="—"
+                placeholder="1,000.00"
                 aria-label="Costo de compra"
                 value={formatAmount(purchase)}
                 onChange={(e) => setPurchase(sanitizeAmount(e.target.value))}
@@ -286,12 +286,11 @@ const formatAmount = (raw: string) => {
                     inputMode="numeric"
                     min="0"
                     step="1"
-                    placeholder="—"
+                    placeholder="Cantidad de días"
                     aria-label="Total de días"
                     value={days}
                     onChange={(e) => setDays(e.target.value)}
                   />
-                  <span>días</span>
                 </label>
               </div>
             </div>

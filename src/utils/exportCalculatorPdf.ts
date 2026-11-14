@@ -81,12 +81,12 @@ export function exportCalculatorPdf(report: CalculatorReport) {
     startY,
     showHead: "firstPage",
     showFoot: "lastPage",
-    head: [["CONCEPTOS", "IMPORTE"]],
+    head: [["GASTOS", "IMPORTE"]],
     body:
       report.concepts.length > 0
         ? report.concepts.map((item) => [item.label, money(item.amount)])
-        : [["Sin conceptos agregados", money(0)]],
-    foot: [["TOTAL CONCEPTOS", money(report.conceptsTotal)]],
+        : [["Sin gastos agregados", money(0)]],
+    foot: [["TOTAL GASTOS", money(report.conceptsTotal)]],
     styles: {
       fontSize: 9,
       cellPadding: 3,
@@ -103,7 +103,7 @@ export function exportCalculatorPdf(report: CalculatorReport) {
     head: [["RESUMEN DE INVERSION", "IMPORTE"]],
     body: [
       ["Costo de compra", money(report.purchase)],
-      ["Conceptos", money(report.conceptsTotal)],
+      ["Gastos", money(report.conceptsTotal)],
     ],
     foot: [["INVERSION TOTAL", money(report.totalInvestment)]],
     styles: {
