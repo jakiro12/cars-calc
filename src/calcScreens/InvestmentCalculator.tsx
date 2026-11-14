@@ -132,21 +132,32 @@ export default function InvestmentCalculator() {
       })),
     });
   };
+const sanitizeAmount = (value: string) => {
+  const cleaned = value.replace(/,/g, '').replace(/[^\d.]/g, '');
+  const [int, ...rest] = cleaned.split('.');
+  const intClean = int.replace(/^0+(?=\d)/, '');
+  return rest.length ? `${intClean || '0'}.${rest.join('').slice(0, 2)}` : intClean;
+};
 
+const formatAmount = (raw: string) => {
+  if (raw === '') return '';
+  const [int, dec] = raw.split('.');
+  const grouped = int.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return dec !== undefined ? `${grouped}.${dec}` : grouped;
+};
   return (
     <main className="app-shell">
       <header className="page-header">
         <div>
           <p className="eyebrow">INVERSIÓN</p>
           <h1>Calculadora de inversión</h1>
-          <p className="page-description">Importes en pesos mexicanos (MXN)</p>
           <input
             className="name-input"
             type="text"
             placeholder="Ingresa el nombre del vehículo"
             aria-label="Nombre del vehículo"
-            value={vehicleName}
-            onChange={(e) => setVehicleName(e.target.value)}
+            value={vehicleName.toLocaleUpperCase()}
+            onChange={(e) => setVehicleName(e.target.value.toLocaleUpperCase())}
           />
         </div>
 
@@ -161,7 +172,6 @@ export default function InvestmentCalculator() {
 
       <div className="dashboard-grid">
         <div className="cost-column">
-          {/* Costo de compra */}
           <section className="panel">
             <div className="panel-heading">
               <h2>Costo de compra</h2>
@@ -169,24 +179,21 @@ export default function InvestmentCalculator() {
             <div className="cost-list">
               <div className="cost-row">
                 <span className="cost-label">Compra</span>
-                <label className="amount-field">
-                  <span>$</span>
-                  <input
-                    type="number"
-                    inputMode="decimal"
-                    min="0"
-                    step="0.01"
-                    placeholder="—"
-                    aria-label="Costo de compra"
-                    value={purchase}
-                    onChange={(e) => setPurchase(e.target.value)}
-                  />
-                </label>
+              <label className="amount-field">
+              <span>$</span>
+              <input
+                type="text"
+                inputMode="decimal"
+                placeholder="—"
+                aria-label="Costo de compra"
+                value={formatAmount(purchase)}
+                onChange={(e) => setPurchase(sanitizeAmount(e.target.value))}
+              />
+            </label>
               </div>
             </div>
           </section>
 
-          {/* Conceptos */}
           <section className="panel">
             <div className="panel-heading">
               <h2>Conceptos</h2>
@@ -266,7 +273,6 @@ export default function InvestmentCalculator() {
             </div>
           </section>
 
-          {/* Total de días */}
           <section className="panel">
             <div className="panel-heading">
               <h2>Total de días</h2>
@@ -298,27 +304,31 @@ export default function InvestmentCalculator() {
               <h2>Precio de venta proyectado</h2>
             </div>
 
-            <div className="scenario-labels">
+            <div className="scenario-labels"
+            >
               {SCENARIOS.map(({ key, label }) => (
-                <span key={key}>{label}</span>
+                <span
+              style={{textAlign:'center'}}
+                
+                key={key}>{label}</span>
               ))}
             </div>
 
             <div className="scenario-prices">
               {SCENARIOS.map(({ key, label }) => (
-                <label key={key} className={`scenario-price${key === 'media' ? ' media' : ''}`}>
-                  <span>$</span>
-                  <input
-                    type="number"
-                    inputMode="decimal"
-                    min="0"
-                    step="0.01"
-                    placeholder="—"
-                    aria-label={`Precio de venta ${label.toLowerCase()}`}
-                    value={prices[key]}
-                    onChange={(e) => setPrices((prev) => ({ ...prev, [key]: e.target.value }))}
-                  />
-                </label>
+               <label key={key} className={`scenario-price${key === 'media' ? ' media' : ''}`}>
+                <span>$</span>
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  placeholder="—"
+                  aria-label={`Precio de venta ${label.toLowerCase()}`}
+                  value={formatAmount(prices[key])}
+                  onChange={(e) =>
+                    setPrices((prev) => ({ ...prev, [key]: sanitizeAmount(e.target.value) }))
+                  }
+                />
+              </label>
               ))}
             </div>
 
@@ -373,7 +383,6 @@ export default function InvestmentCalculator() {
         </div>
       </div>
 
-      <p className="page-footer">Los importes están expresados en pesos mexicanos (MXN).</p>
     </main>
   );
 }
