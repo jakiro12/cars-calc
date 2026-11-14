@@ -31,6 +31,9 @@ const App=()=> {
     {calcsOptions.map((e,i)=>
     <button
       onClick={()=>setCurrentCal(e)}
+       style={{
+    opacity: currentCalc === e ? 1 : 0.6
+  }}
       key={i}
     >
       {e}
