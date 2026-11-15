@@ -169,7 +169,10 @@ const formatAmount = (raw: string) => {
               <h2>Costo de compra</h2>
             </div>
             <div className="cost-list">
-              <div className="cost-row_roi">
+             <div className="cost-row_roi">
+                <span className="cost-label">Compra</span>
+              <label className="amount-field_1">
+              <span>$</span>
               <input
               className="concept-input"
                 type="text"
@@ -180,6 +183,7 @@ const formatAmount = (raw: string) => {
                 value={formatAmount(purchase)}
                 onChange={(e) => setPurchase(sanitizeAmount(e.target.value))}
               />
+            </label>
               </div>
             </div>
           </section>
@@ -269,6 +273,8 @@ const formatAmount = (raw: string) => {
             </div>
             <div className="cost-list">
               <div className="cost-row_roi">
+                 <span className="cost-label">Días</span>
+                <label className="amount-field_1">
                   <input
                    className="concept-input"
                 style={{width:'100%',textAlign:'right'}}
@@ -281,6 +287,7 @@ const formatAmount = (raw: string) => {
                     value={days}
                     onChange={(e) => setDays(e.target.value)}
                   />
+                  </label>
               </div>
             </div>
           </section>

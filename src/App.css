@@ -155,8 +155,10 @@ h1 {
   font-size: 1rem;
 }
 .cost-row_roi {
-  display: grid;
+  display: flex;
   align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
   min-height: 30px;
   font-size: 1rem;
 }
@@ -167,6 +169,14 @@ h1 {
 }
 
 .amount-field {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  color: #e8d5ae;
+  font-size: 1rem;
+}
+.amount-field_1 {
   display: flex;
   align-items: center;
   justify-content: flex-end;

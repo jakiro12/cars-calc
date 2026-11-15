@@ -11,7 +11,7 @@ const App=()=> {
   let setCal;
   const[currentCalc,setCurrentCal]=useState<string|null>(null)
   switch (currentCalc) {
-    case "margen":
+    case "MARGEN":
       setCal =<MainScreenCalc/>
       break;
     case "ROI":

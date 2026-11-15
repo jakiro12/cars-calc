@@ -1,1 +1,1 @@
-export const calcsOptions: string[] = ["margen", "ROI"];
+export const calcsOptions: string[] = ["MARGEN", "ROI"];
